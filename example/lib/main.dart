@@ -39,6 +39,16 @@ class _MyAppState extends State<MyApp> {
   }
 
   @override
+  void dispose() async {
+    _unRegisterListening();
+    super.dispose();
+  }
+
+  void _unRegisterListening() async {
+    await _smsReceiver.unRegisterListening();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
@@ -55,6 +65,13 @@ class _MyAppState extends State<MyApp> {
             RaisedButton(
               child: Text("Listen Again"),
               onPressed: _startListening,
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            RaisedButton(
+              child: Text("UnRegister Lister"),
+              onPressed: _unRegisterListening,
             ),
           ],
         ),
