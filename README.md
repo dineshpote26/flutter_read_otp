@@ -4,15 +4,15 @@ Flutter plugin for reading incoming-and-expected SMS only
 
 Currently developed for Android: reading message without requesting SMS permission
 
-# Example
+**Example**
 
 ReadOtpPlugin _smsReceiver = ReadOtpPlugin(onSmsReceived);
 
-# 1. StartListening
+**1. StartListening**
 
 _smsReceiver.startListening(phoneNumberFilter: "8169920332");
 
-# 2. UnRegisterListening
+**2. UnRegisterListening**
 
 _smsReceiver.unRegisterListening();
 
