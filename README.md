@@ -10,7 +10,7 @@ ReadOtpPlugin _smsReceiver = ReadOtpPlugin(onSmsReceived);
 
 **1. StartListening**
 
-_smsReceiver.startListening(phoneNumberFilter: "8169920332");
+_smsReceiver.startListening(phoneNumberFilter: "Example");
 
 **2. UnRegisterListening**
 
