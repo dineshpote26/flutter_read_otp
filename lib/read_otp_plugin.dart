@@ -32,6 +32,14 @@ class ReadOtpPlugin {
     }
   }
 
+  Future<void> unRegisterListening() async {
+    if (Platform.isAndroid) {
+      await _channel.invokeMethod('unRegisterListening');
+    } else {
+      return null;
+    }
+  }
+
   static Future<String> get platformVersion async {
     final String version = await _channel.invokeMethod('getPlatformVersion');
     return version;
