@@ -43,7 +43,7 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('SMS Listener App'),
+          title: const Text('Read OTP'),
         ),
         body: Column(
           children: <Widget>[
