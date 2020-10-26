@@ -8,10 +8,12 @@ Currently developed for Android: reading message without requesting SMS permissi
 
 ReadOtpPlugin _smsReceiver = ReadOtpPlugin(onSmsReceived);
 
-1. StartListening
+#1. StartListening
+
 _smsReceiver.startListening(phoneNumberFilter: "8169920332");
 
-2.UnRegisterListening
+#2. UnRegisterListening
+
 _smsReceiver.unRegisterListening();
 
 ![Read OTP](https://github.com/dineshpote26/flutter_read_otp/blob/master/screenshot/example2.jpeg)
