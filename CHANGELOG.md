@@ -1,3 +1,3 @@
-## 0.0.1
+## 0.0.1 - 2020-10-26
 
-* TODO: Describe initial release.
+* Initial release.
