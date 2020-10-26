@@ -84,6 +84,8 @@ class ReadOtpPlugin: FlutterPlugin, MethodCallHandler, ActivityAware, FlutterAct
           result.success(false)
         }
       }
+    }else if(call.method == "unRegisterListening"){
+      unRegisterListening()
     } else {
       result.notImplemented()
     }
@@ -110,6 +112,12 @@ class ReadOtpPlugin: FlutterPlugin, MethodCallHandler, ActivityAware, FlutterAct
     val intentFilter = IntentFilter()
     intentFilter.addAction("android.provider.Telephony.SMS_RECEIVED")
     activity.registerReceiver(smsReceiver,intentFilter)
+  }
+
+  private fun unRegisterListening(){
+    Log.d("dinesh","unRegisterListening");
+    activity.unregisterReceiver(smsReceiver)
+    isListening = false
   }
 
   override fun onDetachedFromEngine(@NonNull binding: FlutterPlugin.FlutterPluginBinding) {
