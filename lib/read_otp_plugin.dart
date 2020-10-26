@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:flutter/services.dart';
 
@@ -22,9 +23,13 @@ class ReadOtpPlugin {
   }
 
   Future<bool> startListening({phoneNumberFilter: String}) async {
-    bool result =
-        await _channel.invokeMethod('startListening', phoneNumberFilter);
-    return result;
+    if (Platform.isAndroid) {
+      bool smsCode =
+          await _channel.invokeMethod('startListening', phoneNumberFilter);
+      return smsCode;
+    } else {
+      return null;
+    }
   }
 
   static Future<String> get platformVersion async {
