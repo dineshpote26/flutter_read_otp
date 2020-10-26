@@ -32,7 +32,7 @@ class _MyAppState extends State<MyApp> {
   }
 
   void _startListening() {
-    _smsReceiver.startListening(phoneNumberFilter: "JLEARN");
+    _smsReceiver.startListening(phoneNumberFilter: "7777");
     setState(() {
       _textContent = "Waiting for messages...";
     });
