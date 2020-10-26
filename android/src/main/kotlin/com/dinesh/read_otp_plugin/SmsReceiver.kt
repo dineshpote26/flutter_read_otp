@@ -29,6 +29,7 @@ class SmsReceiver : BroadcastReceiver(){
                 for (i in pdusObj!!.indices) {
                     val currentMessage: SmsMessage = getIncomingMessage(pdusObj[i], bundle)
                     val phoneNumber: String = currentMessage.getDisplayOriginatingAddress()
+                    Log.e("SmsReceiver", "$phoneNumber")
                     if (phoneNumberFilter != null && !phoneNumber.contains(phoneNumberFilter!!)) {
                         return
                     }

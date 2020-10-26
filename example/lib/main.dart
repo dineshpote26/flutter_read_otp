@@ -32,7 +32,7 @@ class _MyAppState extends State<MyApp> {
   }
 
   void _startListening() {
-    _smsReceiver.startListening(phoneNumberFilter: "7777");
+    _smsReceiver.startListening(phoneNumberFilter: "8169920332");
     setState(() {
       _textContent = "Waiting for messages...";
     });
@@ -50,7 +50,7 @@ class _MyAppState extends State<MyApp> {
             Container(
               padding: const EdgeInsets.symmetric(vertical: 16.0),
               alignment: Alignment.center,
-              child: Text(_textContent),
+              child: Text("OTP : $_textContent"),
             ),
             RaisedButton(
               child: Text("Listen Again"),
