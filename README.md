@@ -2,7 +2,7 @@
 
 Flutter plugin for reading incoming-and-expected SMS only using read sms permission
 
-Currently developed for Android: reading message without requesting SMS permission
+Currently developed for Android
 
 **Follow below steps **
 
