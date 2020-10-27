@@ -22,10 +22,10 @@ class ReadOtpPlugin {
     }
   }
 
-  Future<bool> startListening({phoneNumberFilter: String}) async {
+  Future<bool> startListening({providerName: String}) async {
     if (Platform.isAndroid) {
       bool smsCode =
-          await _channel.invokeMethod('startListening', phoneNumberFilter);
+          await _channel.invokeMethod('startListening', providerName);
       return smsCode;
     } else {
       return null;
