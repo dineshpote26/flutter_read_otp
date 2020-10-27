@@ -1,6 +1,6 @@
 name: read_otp_plugin
 description: Reading incoming-and-expected SMS only
-version: 0.0.5
+version: 0.0.6
 homepage: https://github.com/dineshpote26/flutter_read_otp.git
 
 environment:
