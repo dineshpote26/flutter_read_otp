@@ -96,6 +96,7 @@ class ReadOtpPlugin : FlutterPlugin, MethodCallHandler, PluginRegistry.RequestPe
     smsReceiver.setPhoneNumberFilter(filterNumber)
     val intentFilter = IntentFilter()
     intentFilter.addAction("android.provider.Telephony.SMS_RECEIVED")
+    intentFilter.priority =5000
     activity.registerReceiver(smsReceiver,intentFilter)
   }
 
