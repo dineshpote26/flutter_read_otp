@@ -6,7 +6,7 @@ Currently developed for Android: reading message without requesting SMS permissi
 
 **Follow below steps **
 
-**1. add permission**
+**1. Add Permission**
 
 Add all wanted permissions to your app `android/app/src/main/AndroidManifest.xml` file:
 ```xml
