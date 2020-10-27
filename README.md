@@ -6,20 +6,12 @@ Currently developed for Android
 
 **Follow below steps **
 
-**1. Add Permission**
 
-Add all wanted permissions to your app `android/app/src/main/AndroidManifest.xml` file:
-```xml
- <uses-permission android:name="android.permission.RECEIVE_SMS" />
- <uses-permission android:name="android.permission.READ_SMS" />
-
-```
-
-**2. StartListening**
+**1. StartListening**
 
 _smsReceiver.startListening(providerName: "Example");
 
-**3. UnRegisterListening**
+**2. UnRegisterListening**
 
 _smsReceiver.unRegisterListening();
 
