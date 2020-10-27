@@ -1,18 +1,21 @@
 # read_otp_plugin
 
-Flutter plugin for reading incoming-and-expected SMS only
+Flutter plugin for reading incoming-and-expected SMS only using read sms phone permission
 
 Currently developed for Android: reading message without requesting SMS permission
 
-**Example**
+**Follow below steps **
 
-ReadOtpPlugin _smsReceiver = ReadOtpPlugin(onSmsReceived);
+**1. add permission**
 
-**1. StartListening**
+ <uses-permission android:name="android.permission.RECEIVE_SMS" />
+ <uses-permission android:name="android.permission.READ_SMS" />
 
-_smsReceiver.startListening(phoneNumberFilter: "Example");
+**2. StartListening**
 
-**2. UnRegisterListening**
+_smsReceiver.startListening(providerName: "Example");
+
+**3. UnRegisterListening**
 
 _smsReceiver.unRegisterListening();
 
