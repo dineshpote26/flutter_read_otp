@@ -9,7 +9,7 @@ Currently developed for Android
 
 **1. StartListening**
 
-_smsReceiver.startListening(providerName: "Example");
+_smsReceiver.startListening(providerName: "777", otpLength: 6);
 
 **2. UnRegisterListening**
 

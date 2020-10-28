@@ -25,3 +25,7 @@
 ## 0.0.7 - 2020-10-27
 
 * fix permission issue
+
+## 0.0.8 - 2020-10-28
+
+* add otp length for retrive code from msg
