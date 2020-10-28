@@ -15,6 +15,7 @@ class SmsReceiver : BroadcastReceiver(){
 
     private var listener : Listener?= null
     private var phoneNumberFilter : String ?= null
+    private var otpLength : Int ?= null
 
     fun setListener(listener: Listener){
         this.listener = listener
@@ -57,14 +58,18 @@ class SmsReceiver : BroadcastReceiver(){
         this.phoneNumberFilter = phoneNumberFilter
     }
 
+    fun setOTPLength(otpLength: Int) {
+        this.otpLength = otpLength
+    }
+
     /**
      * Parse verification code
      *
      * @param message sms message
-     * @return only four numbers from massage string
+     * @return only otpLength numbers from massage string
      */
    fun parseCode(message: String): String {
-        val p = Pattern.compile("\\b\\d{6}\\b")
+        val p = Pattern.compile("\\b\\d{$otpLength}\\b")
         val m: Matcher = p.matcher(message)
         var code = ""
         while (m.find()) {
