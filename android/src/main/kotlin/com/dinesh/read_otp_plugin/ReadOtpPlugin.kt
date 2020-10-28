@@ -29,6 +29,7 @@ class ReadOtpPlugin : FlutterPlugin, MethodCallHandler, PluginRegistry.RequestPe
   private var isListening: Boolean = false
 
   private var filterNumber : String? = null
+  private var otpLength : Int = 6
 
   val TAG:String = "ReadOtp"
 
@@ -51,17 +52,15 @@ class ReadOtpPlugin : FlutterPlugin, MethodCallHandler, PluginRegistry.RequestPe
     }else if(call.method == "startListening"){
 
       if(call.arguments!=null){
-        filterNumber = call.arguments as String
+       var  param : Map<String,Object>  = call.arguments as Map<String, Object>
+        filterNumber = param.get("providerName").toString()
+        otpLength = param.get("otpLength").toString().toInt()
       }
-
-
       Log.d(TAG, "filterNumber"+filterNumber)
       synchronized(this){
         if(!isListening){
           isListening = true
-
           checkPermission()
-
           Log.d(TAG, "SMS Receiver Registered")
           result.success(true)
         }else{
@@ -76,13 +75,6 @@ class ReadOtpPlugin : FlutterPlugin, MethodCallHandler, PluginRegistry.RequestPe
     }
   }
 
-  private fun hasReadSmsPermission(): Boolean {
-    return ContextCompat.checkSelfPermission(activity,
-            Manifest.permission.READ_SMS) == PackageManager.PERMISSION_GRANTED &&
-            ContextCompat.checkSelfPermission(activity,
-                    Manifest.permission.RECEIVE_SMS) == PackageManager.PERMISSION_GRANTED
-  }
-
   private fun startListening(filterNumber : String) {
     Log.d(TAG,"startListening");
     var listener =  object:SmsReceiver.Listener{
@@ -94,6 +86,7 @@ class ReadOtpPlugin : FlutterPlugin, MethodCallHandler, PluginRegistry.RequestPe
     }
     smsReceiver.setListener(listener)
     smsReceiver.setPhoneNumberFilter(filterNumber)
+    smsReceiver.setOTPLength(otpLength);
     val intentFilter = IntentFilter()
     intentFilter.addAction("android.provider.Telephony.SMS_RECEIVED")
     intentFilter.priority =999
@@ -111,14 +104,6 @@ class ReadOtpPlugin : FlutterPlugin, MethodCallHandler, PluginRegistry.RequestPe
 
   override fun onDetachedFromEngine(@NonNull binding: FlutterPlugin.FlutterPluginBinding) {
     channel.setMethodCallHandler(null)
-  }
-
-  private fun requestReadAndSendSmsPermission() {
-    if (ActivityCompat.shouldShowRequestPermissionRationale(activity, Manifest.permission.READ_SMS)) {
-      return
-    }
-    ActivityCompat.requestPermissions(activity, arrayOf(Manifest.permission.READ_SMS, Manifest.permission.RECEIVE_SMS),
-            PERMISSION_REQUEST_CODE)
   }
 
   override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>?, grantResults: IntArray?): Boolean {
