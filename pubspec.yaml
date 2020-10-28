@@ -1,5 +1,5 @@
 name: read_otp_plugin
-description: Reading incoming-and-expected SMS only
+description: Reading incoming-and-expected SMS only using sms permission and broadcast receiver
 version: 0.0.8
 homepage: https://github.com/dineshpote26/flutter_read_otp.git
 
