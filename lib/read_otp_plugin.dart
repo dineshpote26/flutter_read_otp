@@ -22,10 +22,13 @@ class ReadOtpPlugin {
     }
   }
 
-  Future<bool> startListening({providerName: String}) async {
+  Future<bool> startListening({String providerName, int otpLength = 6}) async {
     if (Platform.isAndroid) {
-      bool smsCode =
-          await _channel.invokeMethod('startListening', providerName);
+      Map<String, dynamic> agrs = {
+        "providerName": providerName,
+        "otpLength": otpLength,
+      };
+      bool smsCode = await _channel.invokeMethod('startListening', agrs);
       return smsCode;
     } else {
       return null;
